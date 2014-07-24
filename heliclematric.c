@@ -2,29 +2,38 @@
 	Write a C program to print a square matrix helically.
 */
 
-#include<stdio.h>
+#include <stdio.h>
+void print(int, int, int[5][4]);
 
-int main()
+void main()
 {
-	int arr[][4] =
+	int matrix[5][4]={{1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,15,16},{17,18,19,20}};
+	print(5,4,matrix);
+}
+
+void print(int row, int column, int matrix[5][4])
+{
+	int left=0,right=column-1,top=0,bottom=row-1;
+	int i,j;
+	while(1)
 	{
-		{1,2,3,4},
-		{5,6,7,8},
-		{9,10,11,12},
-		{13,14,15,16}
-	};
-	int i, j, k,middle,size;
-	printf("\n\n");
-	size = 4;
-	for(i=size-1, j=0; i>0; i--, j++)
-	{
-		for(k=j; k<i; k++) printf("%d ", arr[j][k]);
-		for(k=j; k<i; k++) printf("%d ", arr[k][i]);
-		for(k=i; k>j; k--) printf("%d ", arr[i][k]);
-		for(k=i; k>j; k--) printf("%d ", arr[k][j]);
+		if(left > right || top > bottom)
+			break;
+		
+		for(j=left;j<=right;j++)
+			printf("%d ",matrix[top][j]);
+		top++;
+
+		for(i=top;i<=bottom;i++)
+			printf("%d ",matrix[i][right]);
+		right--;
+		
+		for(j=right;j>=left;j--)
+			printf("%d ",matrix[bottom][j]);
+		bottom--;
+		
+		for(i=bottom;i>=top;i--)
+			printf("%d ",matrix[i][left]);
+		left++;
 	}
-	middle = (size-1)/2;
-	if (size % 2 == 1) printf("%d", arr[middle][middle]);
-	printf("\n\n");
-	return 1;
 }

@@ -3,41 +3,45 @@
 */
 
 #include <stdio.h>
-void rev(char *l, char *r);
+#include <string.h>
+void reversestring(char[], char *, char *);
+void print(char[]);
 
-int main(int argc, char *argv[])
+void main()
 {
-	char buf[] = "the world will go on forever";
-	char *end, *x, *y;
-	
-	// Reverse the whole sentence first..
-	for(end=buf; *end; end++);
-	rev(buf,end-1);
-	
-	// Now swap each word within sentence...
-	x = buf-1;
-	y = buf;
-	while(x++ < end)
+	char *start, *end;
+	char string[50] = "I am a good boy";
+	start = string;
+	end = strlen(string)+start-1;
+	reversestring(string, start, end);
+	char *newstart=start;
+	for(start;start<end;start++)
 	{
-		if(*x == '\0' || *x == ' ')
+		if(*start == '\0' || *start == ' ')
 		{
-			rev(y,x-1);
-			y = x+1;
+			reversestring(string, newstart, start-1);
+			newstart = start+1;
 		}
 	}
-	// Now print the final string....
-	printf("%s\n",buf);
-	return(0);
+
+	print(string);
 }
 
-// Function to reverse a string in place...
-void rev(char *l,char *r)
+void reversestring(char string[], char *start, char *end)
 {
-	char t;
-	while(l<r)
+	char temp;
+	while(start<end)
 	{
-		t = *l;
-		*l++ = *r;
-		*r-- = t;
+		temp=*start;
+		*start = *end;
+		*end = temp;
+		start++;end--;
 	}
+}
+
+void print(char string[])
+{
+	int i=0;
+	for(i;i<strlen(string);i++)
+		printf("%c ",string[i]);
 }

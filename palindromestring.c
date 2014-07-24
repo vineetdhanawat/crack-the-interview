@@ -3,42 +3,21 @@
 */
 
 #include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <ctype.h>
-void isPalindrome(char *string);
-int main()
-{
-	isPalindrome("avon sees nova");
-	isPalindrome("a");
-	isPalindrome("avon sies nova");
-	isPalindrome("aa");
-	isPalindrome("abc");
-	isPalindrome("aba");
-	isPalindrome("3a2");
-	exit(0);
-}
 
-void isPalindrome(char *string)
+void main()
 {
-	char *start, *end;
-	if(string)
+	int array[]={11, -12, 15, -3, 8, -9, 1, 8, 10, -2};
+	int size = sizeof(array)/sizeof(int);
+	int i=0,j=0,k=0;
+	int sum=0, maxsum=0;
+	for(i;i<size;i++)
 	{
-		start = string;
-		end = string + strlen(string) - 1;
-		while((*start == *end) && (start!=end))
-		{
-			if(start<end)start++;
-			if(end>start)end--;
-		}
-		if(*start!=*end)
-		{
-			printf("\n[%s] - This is not a palidrome!\n", string);
-		}
-		else
-		{
-			printf("\n[%s] - This is a palidrome!\n", string);
-		}
+		sum += array[i]
+		if(sum > maxsum)
+			maxsum = sum;
+		else if(sum <0)
+			sum = 0;
 	}
-	printf("\n\n");
+	
+	printf("sum: %d",maxsum);
 }

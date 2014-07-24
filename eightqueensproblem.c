@@ -3,56 +3,50 @@
 	Write a C program to solve it.
 */
 
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+int matrix[8] = {-1};
+void calculate(int);
+int check(int);
+void print();
 
-static int t[10]={-1};
-void queens(int i);
-int empty(int i);
-void print_solution();
-
-int main()
+void main()
 {
-	queens(1);
-	//print_solution();
-	return(0);
+	int i=0;
+	//print();
+	calculate(i);
+	print();
 }
 
-void queens(int i)
+void calculate(int i)
 {
-	for(t[i]=1;t[i]<=8;t[i]++)
+	for(matrix[i]=0;matrix[i]<8;matrix[i]++)
 	{
-		if(empty(i))
+		if(check(i))
 		{
-			if(i==8)
-			{
-				
-				print_solution();
-				printf("\n");
-				/* If this exit is commented, it will show ALL possible combinations */
-				exit(0);
-			}
-			else
-			{
-				// Recurse!
-				queens(i+1);
-			}
-		}// if
-	}// for
+			if(i == 7)
+			print();
+			calculate(i+1);
+		}
+	}
 }
 
-int empty(int i)
+int check(int i)
 {
-	int j;
-	j=1;
-	while(t[i]!=t[j] && abs(t[i]-t[j])!=(i-j) &&j<8)
-		j++;
-	return((i==j)?1:0);
+int j;
+	for(j=0;j<i;j++)
+	{
+		if(!(matrix[i]!=matrix[j] && abs(matrix[i]-matrix[j])!=i-j))
+		return 0;
+	}
+	return 1;
 }
 
-void print_solution()
+void print()
 {
-	int i;
-	for(i=1;i<=8;i++)
-	printf("\nt[%d] = [%d]",i,t[i]);
+	int x;
+	printf("\n\n");
+	for(x=0;x<8;x++)
+	{
+		printf("%d %d \n",x,matrix[x]);
+	}
 }
