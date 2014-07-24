@@ -2,11 +2,23 @@
 	How can we sum the digits of a given number in single statement?
 */
 
-# include<stdio.h>
+#include <stdio.h>
+void calculateSum(int);
+
 void main()
 {
-	int num=123456;
+	int x=819;
+	calculateSum(x);
+}
+
+void calculateSum(int x)
+{
 	int sum=0;
-	for(;num>0;sum+=num%10,num/=10); // This is the "single line".
-	printf("\nsum = [%d]\n", sum);
+	while(x>0)
+	{
+		sum += x%10;
+		x=x/10;
+	}
+	
+	printf("%d",sum);
 }

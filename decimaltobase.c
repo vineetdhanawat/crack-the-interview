@@ -2,30 +2,40 @@
 	Write a C progam to convert from decimal to any base (binary, hex, oct etc...).
 */
 
-#include <stdio.h>
-int main()
+#include<stdio.h>
+void decimaltobase(int,int);
+void main()
 {
-	decimal_to_anybase(10, 2);
-	decimal_to_anybase(255, 16);
-	//getch();
+	decimaltobase(5,2);
+	decimaltobase(6,2);
+	decimaltobase(7,2);
+	decimaltobase(8,2);
+	decimaltobase(9,2);
+	decimaltobase(9,3);
+	decimaltobase(1000,16);
 }
 
-decimal_to_anybase(int n, int base)
+void decimaltobase(int x, int y)
 {
-	int i, m, digits[1000], flag;
-	i=0;
-	printf("\n\n[%d] converted to base [%d] : ", n, base);
-	while(n)
+	int base[100];
+	int i=0;
+	int flag = 0;
+	while(x>0)
 	{
-		m=n%base;
-		digits[i]="0123456789abcdefghijklmnopqrstuvwxyz"[m];
-		n=n/base;
+		//base[i] = x%y;
+		base[i]="0123456789abcdefghijklmnopqrstuvwxyz"[x%y];
+		x = x/y;
+		//printf("%d : %d \n",i,base[i]);
 		i++;
 	}
-	//Eliminate any leading zeroes
-	for(i--;i>=0;i--)
-	{
-		if(!flag && digits[i]!='0')flag=1;
-		if(flag)printf("%c",digits[i]);
-	}
+	//printf("DONE \n");
+	for(i;i>0;i--)
+		if(!base[i-1] && !flag)
+		{}
+		else
+		{	
+			flag = 1;
+			printf("%c ",base[i-1]);
+		}
+	printf("\n");	
 }
