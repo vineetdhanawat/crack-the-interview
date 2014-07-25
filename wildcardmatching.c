@@ -2,49 +2,33 @@
 	Write a C program which does wildcard pattern matching algorithm.
 */
 
-#include<stdio.h>
-#define TRUE 1
-#define FALSE 0
-int wildcard(char *string, char *pattern);
-int main()
+#include <stdio.h>
+#include <stdbool.h>
+
+bool wildcard(char *, char *);
+
+void main()
 {
-	char *string = "hereheroherr";
-	char *pattern = "*hero*";
-	if(wildcard(string, pattern)==TRUE)
-	{
-		printf("\nMatch Found!\n");
-	}
-	else
-	{
-		printf("\nMatch not found!\n");
-	}
-	return(0);
+	char string[] = "hello world";
+	char pattern[] = "*ello*";
+	printf("%s", wildcard(string, pattern) ? "true" : "false");
+	//printf("%B",true);
 }
 
-int wildcard(char *string, char *pattern)
+bool wildcard(char *string, char *pattern)
 {
-	while(*string)
-	{
-		switch(*pattern)
-		{
-			case '*': 	
-			{			
-				do {++pattern;} while(*pattern == '*');
-				if(!*pattern) return(TRUE);
-				while(*string)
-				{
-					if(wildcard(string++,pattern)==TRUE)
-					return(TRUE);
-				}
-				return(FALSE);
-			}
-			default : if(*string!=*pattern) return(FALSE); break;
-		}
-		++pattern;
-		++string;
-	}
-	while (*pattern == '*')
-		++pattern;
-
-	return !*pattern;
+	//printf("wildcard test");
+	if(*pattern == '\0' && *string == '\0')
+		return true;
+	
+	if(*pattern == '*' && *(pattern+1) != '\0' && *string == '\0')
+		return false;
+		
+	if(*pattern == *string || *pattern == '?')
+		return wildcard(string+1,pattern+1);
+		
+	if(*pattern == '*')
+		return(wildcard(string,pattern+1) || wildcard(string+1,pattern));
+		
+	return false;
 }

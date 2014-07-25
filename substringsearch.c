@@ -1,5 +1,5 @@
 /*
-	Write C code to implement the strstr() (search for a substring) function.
+	Write C code to implement the substr() (search for a substring) function.
 	Bruteforce Method
 */
 
