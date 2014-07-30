@@ -1,5 +1,5 @@
 /*
-	How can we sum the digits of a given number in single statement?
+	How can we sum the digits of a given number?
 */
 
 #include <stdio.h>
