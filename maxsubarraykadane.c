@@ -13,13 +13,14 @@ void main()
 	int sum=0, maxsum=0;
 	for(i;i<size;i++)
 	{
-		sum = 0;
-		for(j=i;j<size;j++)
+		sum+= array[i];
+		if(sum>0)
 		{
-			sum+= array[j];
 			if(sum>maxsum)
 				maxsum=sum;
 		}
+		else
+		sum=0;
 	}	
 	printf("sum: %d",maxsum);
 }
