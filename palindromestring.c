@@ -3,21 +3,29 @@
 */
 
 #include <stdio.h>
+#include <string.h>
 
+int palindromeCheck(char []);
 void main()
 {
-	int array[]={11, -12, 15, -3, 8, -9, 1, 8, 10, -2};
-	int size = sizeof(array)/sizeof(int);
-	int i=0,j=0,k=0;
-	int sum=0, maxsum=0;
-	for(i;i<size;i++)
+	char string1[] = "I am a good boy";
+	char string2[] = "yoy";
+
+	printf("%s\n",palindromeCheck(string1)?"true":"false");
+	printf("%s\n",palindromeCheck(string2)?"true":"false");
+}
+
+int palindromeCheck(char string[])
+{
+	int len = strlen(string);
+	char *start, *end;
+	start = string;
+	end = string+len-1;
+	while(start<=end)
 	{
-		sum += array[i]
-		if(sum > maxsum)
-			maxsum = sum;
-		else if(sum <0)
-			sum = 0;
+		if(*start != *end)
+		return 0;
+		start++;end--;
 	}
-	
-	printf("sum: %d",maxsum);
+	return 1;
 }
