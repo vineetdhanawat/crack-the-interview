@@ -1,9 +1,9 @@
 /*
-	Write a C program to implement btree basic operations.
+	Write a C program to implement binary search tree (BST) basic operations.
 */
 
 #include <stdio.h>
-#include<stdlib.h>
+#include <stdlib.h>
 
 struct treenode
 {
