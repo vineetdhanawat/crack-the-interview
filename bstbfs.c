@@ -1,5 +1,6 @@
 /*
 	Write a C program to implement binary search tree (BST) basic operations.
+	Breadth First Search
 */
 
 #include <stdio.h>
