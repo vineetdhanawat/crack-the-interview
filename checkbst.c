@@ -31,7 +31,7 @@ int checkBST(node *root, int min, int max)
 	if(root->value > max || root->value < min)
 		return 0;
 
-	return (checkBST(root->left, min, root->value-1) && checkBST(root->right, root->value+1, max));
+	return (checkBST(root->left, min, root->value) && checkBST(root->right, root->value, max));
 }
 
 void main()
