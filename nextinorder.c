@@ -79,7 +79,15 @@ void nextinorder(node *tree, int value)
 		if(tree->keyvalue == value)
 		{
 			if(tree->right)
-				printf("NEXT:%d",tree->right->keyvalue);
+			{
+				node *temp;
+				temp = tree->right;
+				while(temp->left)
+				{
+					temp = temp -> left;
+				}
+				printf("NEXT:%d",temp->keyvalue);
+			}
 			else
 			{
 				node *parent;
@@ -116,5 +124,5 @@ void main()
 	printf("POSTORDER\n");
 	postorder(root);
 	printf("NEXTINORDER\n");
-	nextinorder(root,6);
+	nextinorder(root,9);
 }
